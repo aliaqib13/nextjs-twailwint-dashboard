@@ -19,7 +19,6 @@ export default function Admin({ children }) {
           <HeaderStats />
 
           <div className="px-4 md:px-10 mx-auto w-full -m-24">
-            {console.log("render ui")}
             {children}
             <FooterAdmin />
           </div>
