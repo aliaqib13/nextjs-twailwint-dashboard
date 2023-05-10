@@ -48,6 +48,7 @@ Remove the margin in all browsers.
 ::-webkit-scrollbar {
   width: 10px;
 }
+
  
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -3329,6 +3330,10 @@ select {
 }
 
 .hover\:text-blueGray-800:hover {
+  --tw-text-opacity: 1;
+  color: rgba(30, 41, 59, var(--tw-text-opacity));
+}
+.hover\:bg-blueGray-800:hover {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
 }

@@ -7,12 +7,14 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import HeaderStats from "components/Headers/HeaderStats.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 import PrivateRoute from "components/Private-routes/PrivateRoute";
+import SideBar1 from "components/Sidebar/SideBar1";
 
 export default function Admin({ children }) {
   return (
     <>
       <PrivateRoute>
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <SideBar1 />
         <div className="relative md:ml-64 bg-blueGray-100">
           <AdminNavbar />
           {/* Header */}
