@@ -2,6 +2,8 @@ module.exports = {
   content: [
     "./pages/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}",
+    "./components/Cards/**/*.{js,jsx,ts,tsx}",
+
     "./pages/index.js",
     "./layouts/**/*.{js,jsx,ts,tsx}",
 
@@ -15,7 +17,7 @@ module.exports = {
           100: "#E2E8F0",
           200: "#E2E8F0",
           300: "#E2E8F0",
-          400: "#d2bab0",
+          400: "#94a3b8",
           500: "#647498",
           600: "#475569",
           700: "#334155",
