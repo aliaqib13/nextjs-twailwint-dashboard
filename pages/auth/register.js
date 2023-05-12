@@ -15,7 +15,7 @@ export default function Register() {
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-blueGray-500 text-sm font-bold">
-                    Register{" "}
+                    Register
                   </h6>
                 </div>
 

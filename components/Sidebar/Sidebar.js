@@ -15,7 +15,7 @@ import {
   MdOutlineProductionQuantityLimits,
 } from "react-icons/md";
 
-export default function Sidebar() {
+export default function SideBar1() {
   const [collapseShow, setCollapseShow] = useState("hidden");
   const [showSubMenu, setshowSubMenu] = useState("");
   const router = useRouter();
@@ -25,36 +25,53 @@ export default function Sidebar() {
       name: "DASHBOARD",
       path: "/admin/dashboard",
       icon: <AiOutlineHome className=" text-xl" />,
-      subMenu: [
-        { name: "Product", path: "/product" },
-        { name: "Product", path: "/product" },
-        { name: "Product", path: "/product" },
-      ],
     },
-    {
-      name: "MY ACCOUNT",
-      path: "/admin/settings",
-      icon: <RxAvatar className=" text-xl" />,
-    },
-    {
-      name: "SETTINGS",
-      path: "/admin/settings",
-      icon: <AiOutlineSetting className=" text-xl" />,
-    },
-    {
-      name: "ALL USER",
-      path: "/admin/tables",
-      icon: <FiUsers className=" text-xl" />,
-    },
+    // {
+    //   name: "MY ACCOUNT",
+    //   path: "/admin/settings",
+    //   icon: <RxAvatar className=" text-xl" />,
+    //   subMenu: [
+    //     { name: "Profile", path: "/admin/settings" },
+    //     { name: "Edit Profile", path: "/admin/settings" },
+    //   ],
+    // },
     {
       name: "CATEGORIES",
       path: "/admin/tables",
       icon: <BiCategoryAlt className=" text-xl" />,
+      subMenu: [
+        // { name: "All Catagories", path: "/admin/categories" },
+        { name: "Add Catagory", path: "/admin/categories/add-category" },
+        { name: "Edit Catagory", path: "/admin/categories/edit-category" },
+      ],
     },
     {
       name: "PRODUCTS",
       path: "/admin/tables",
       icon: <MdOutlineProductionQuantityLimits className=" text-xl" />,
+      subMenu: [
+        // { name: "All Product", path: "/admin/all-product" },
+        { name: "Process Order", path: "/admin/process-order" },
+        { name: "Place Order", path: "/admin/place-order" },
+      ],
+    },
+    {
+      name: "ALL USER",
+      path: "/admin/tables",
+      icon: <FiUsers className=" text-xl" />,
+      subMenu: [
+        { name: "Add User", path: "/admin/user/add-user" },
+        { name: "Edit User", path: "/admin/user/edit-user" },
+      ],
+    },
+    {
+      name: "SETTINGS",
+      path: "/admin/settings",
+      icon: <AiOutlineSetting className=" text-xl" />,
+      subMenu: [
+        { name: "Account Settings", path: "/admin/settings" },
+        { name: "Manage User", path: "/admin/settings" },
+      ],
     },
   ];
   return (
@@ -97,14 +114,14 @@ export default function Sidebar() {
             <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <Link href="/">
+                  <CustomLink href="/">
                     <a
                       href="#pablo"
                       className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                     >
                       Notus NextJS
                     </a>
-                  </Link>
+                  </CustomLink>
                 </div>
                 <div className="w-6/12 flex justify-end">
                   <button
@@ -130,10 +147,6 @@ export default function Sidebar() {
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Layout Pages
-            </h6>
 
             {/* Navigation */}
 
@@ -143,23 +156,27 @@ export default function Sidebar() {
                   <li
                     key={i}
                     className="items-center"
-                    onClick={() => setshowSubMenu(item?.name)}
+                    onClick={
+                      item?.subMenu
+                        ? () => setshowSubMenu(item?.name)
+                        : () => router.push(item?.path)
+                    }
                   >
                     <div
-                      className={`text-xs uppercase font-bold block cursor-pointer
+                      className={`text-sm uppercase font-bold block cursor-pointer
                         ${
-                          item?.path === router.pathname
+                          item?.name === showSubMenu
                             ? "text-lightBlue-500 hover:text-lightBlue-600"
                             : "text-blueGray-700 hover:text-blueGray-500"
                         }`}
                     >
-                      <div className="flex items-center justify-between ">
+                      <div className="flex items-center justify-between  ">
                         <div className="flex items-center">
                           <div className="mr-4"> {item?.icon}</div>
                           <div> {item?.name}</div>
                         </div>
                         <div className=" m-4 text-xl ">
-                          <MdOutlineKeyboardArrowDown />
+                          {item?.subMenu && <MdOutlineKeyboardArrowDown />}
                         </div>
                       </div>
                     </div>
@@ -168,16 +185,19 @@ export default function Sidebar() {
                   {item?.subMenu && showSubMenu === item?.name && (
                     <>
                       {item?.subMenu?.map((sub, i) => (
-                        <li key={i} className=" grid grid-cols-1 gap-2">
-                          <div className=" pl-10">
+                        <div
+                          key={i}
+                          className=" grid grid-cols-1 my-2  text-blueGray-700  font-medium "
+                        >
+                          <div className=" pl-10 ">
                             <CustomLink
                               href={sub.path}
-                              className=" text-lg py-2 bg-black"
+                              className=" text-md py-2 "
                             >
                               {sub.name}
                             </CustomLink>
                           </div>
-                        </li>
+                        </div>
                       ))}
                     </>
                   )}
@@ -188,9 +208,26 @@ export default function Sidebar() {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              LogOut
-            </h6>
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+              <li className="items-center">
+                <div
+                  className={`text-sm uppercase font-bold block cursor-pointer   `}
+                >
+                  <div className="flex items-center justify-between  ">
+                    <div className="flex items-center">
+                      <div className="mr-4">
+                        {" "}
+                        <RxAvatar className=" text-xl" />
+                      </div>
+                      <div> LogOut</div>
+                    </div>
+                    <div className=" m-4 text-xl ">
+                      {/* <MdOutlineKeyboardArrowDown /> */}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

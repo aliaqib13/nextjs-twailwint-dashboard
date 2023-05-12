@@ -4,13 +4,12 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 
-import PageChange from "components/PageChange/PageChange.js";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "styles/tailwind.css";
+import "../styles/globals.css";
 
 import { Provider } from "react-redux";
 import store from "../Redux/Store";
+import PageChange from "../components/PageChange/PageChange";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -52,7 +51,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Notus NextJS by Creative Tim</title>
+          <title>Sire Printing Admin</title>
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Provider store={store}>
