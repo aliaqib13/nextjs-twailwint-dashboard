@@ -40,7 +40,7 @@ export default function SideBar1() {
       path: "/admin/tables",
       icon: <BiCategoryAlt className=" text-xl" />,
       subMenu: [
-        // { name: "All Catagories", path: "/admin/categories" },
+        { name: " All Catagories", path: "/admin/categories" },
         { name: "Add Catagory", path: "/admin/categories/add-category" },
         { name: "Edit Catagory", path: "/admin/categories/edit-category" },
       ],
